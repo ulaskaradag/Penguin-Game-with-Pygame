@@ -144,7 +144,7 @@ class init_game:
         self.ground_x2 = self.screen_width
 
     
-    def set_blits(self, surface ,pos_x1 , pos_x2 , pos_y1 , pos_y2):  
+    def set_blits(self, surface ,pos_x1: int , pos_x2: int , pos_y1: int , pos_y2: int):  
 
         self.display_surface.blit(surface , (pos_x1 , pos_y1))
         self.display_surface.blit(surface , (pos_x2 , pos_y2))
