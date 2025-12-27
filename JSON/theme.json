@@ -1,0 +1,115 @@
+{
+    "@blue_button": {
+        "font": {
+            "name": "game_font",
+            "size": "20"
+        },
+        "colors": {
+            "normal_bg": "#04BCFF",
+            "hovered_bg": "#0091C2",
+            "active_bg": "#007BA5",
+            "normal_text": "#FFFFFF"
+        },
+        "misc": {
+            "shape": "rounded_rectangle",
+            "shape_corner_radius": "20"
+        }
+    },
+    "@orange_button": {
+        "font": {
+            "name": "game_font",
+            "size": "20"
+        },
+        "colors": {
+            "normal_bg": "#FF9204",
+            "hovered_bg": "#D37903",
+            "active_bg": "#A55E02",
+            "normal_text": "#FFFFFF"
+        },
+        "misc": {
+            "shape": "rounded_rectangle",
+            "shape_corner_radius": "20"
+        }
+    },
+    "@red_button": {
+        "font": {
+            "name": "game_font",
+            "size": "20"
+        },
+        "colors": {
+            "normal_bg": "#F44336",
+            "hovered_bg": "#D32F2F",
+            "active_bg": "#B71C1C",
+            "normal_text": "#FFFFFF"
+        },
+        "misc": {
+            "shape": "rounded_rectangle",
+            "shape_corner_radius": "20"
+        }
+    },
+    "#gameover_screen_font": {
+        "font": {
+            "name": "game_font",
+            "size": "32"
+        },
+        "colours": {
+            "normal_text": "#FF9204",
+            "normal_bg": "#000000"
+        },
+        "misc": {
+            "text_horiz_alignment": "center",
+            "text_vert_alignment": "center",
+            "shadow_width": "2",
+            "shadow_colour": "#000000"
+        }
+    },
+    "#action_label": {
+        "font": {
+            "name": "game_font",
+            "size": "24"
+        },
+        "colours": {
+            "normal_text": "#000000",
+            "normal_bg": "#000000"
+        },
+        "misc": {
+            "text_horiz_alignment": "center",
+            "text_vert_alignment": "center",
+            "shadow_width": "2",
+            "shadow_colour": "#000000"
+        }
+    },
+    "#settings_title": {
+        "font": {
+            "name": "game_font",
+            "size": "32",
+            "bold": "1"
+        },
+        "colours": {
+            "normal_text": "#FFFFFF",
+            "normal_bg": "#000000"
+        },
+        "misc": {
+            "text_horiz_alignment": "center",
+            "text_vert_alignment": "center",
+            "shadow_width": "2",
+            "shadow_colour": "#000000"
+        }
+    },
+    "#key_display": {
+        "font": {
+            "name": "game_font",
+            "size": "32"
+        },
+        "colours": {
+            "normal_text": "#FF9204",
+            "normal_bg": "#0000000"
+        },
+        "misc": {
+            "text_horiz_alignment": "center",
+            "text_vert_alignment": "center",
+            "shadow_width": "2",
+            "shadow_colour": "#000000"
+        }
+    }
+}
