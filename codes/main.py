@@ -18,13 +18,13 @@ class Obstacle:
         self.is_bird = is_bird
         self.mask = pygame.mask.from_surface(self.obs_img)
     
-    def update(self):
+    def update_obstacle(self):
         self.rect.x -= self.speed
     
-    def draw(self , surface):
+    def draw_obstacle(self , surface):
         surface.blit(self.obs_img , self.rect)
     
-    def reposition(self, obs_ground_y, screen_height , ratio_h):
+    def reposition_obstacle(self, obs_ground_y, screen_height , ratio_h):
         if self.is_bird:
             self.rect.bottom = obs_ground_y - int(screen_height * 0.125)
         else:
@@ -117,7 +117,7 @@ class Game(init_game):
             self.display_surface.blit(self.penguin, self.penguin_rect)
 
             for obs in self.obstacles:
-                obs.draw(self.display_surface)
+                obs.draw_obstacle(self.display_surface)
 
             self.gui_mgr.draw_ui(self.display_surface)
             pygame.display.flip()
@@ -135,7 +135,7 @@ class Game(init_game):
             self.display_surface.blit(self.penguin, self.penguin_rect)
 
             for obs in self.obstacles:
-                obs.draw(self.display_surface)
+                obs.draw_obstacle(self.display_surface)
 
             txt = self.countdown_font.render(str(i), True, (200, 0, 0))
             rect = txt.get_rect(center=(self.screen_width // 2, self.screen_height // 2))
@@ -344,7 +344,7 @@ class Game(init_game):
             self.obstacle_timer = 0
         
         for obs in self.obstacles[:]:
-            obs.update()
+            obs.update_obstacle()
             if obs.rect.right < 0:
                 self.obstacles.remove(obs)
             
@@ -384,11 +384,9 @@ class Game(init_game):
 
                 if self.show_speed_up_text:
                     current_time = pygame.time.get_ticks()
-                    # Yazı 2 saniye (2000 ms) boyunca görünsün
                     if current_time - self.speed_up_timer < 2000:
-                    # Yanıp sönme efekti (0.25 saniyede bir)
                         if (current_time // 250) % 2 == 0:
-                            speed_text = self.countdown_font.render("SPEED UP!", True, (255, 255, 255)) # Turuncu-Kırmızı
+                            speed_text = self.countdown_font.render("SPEED UP!", True, (255, 255, 255))
                             text_rect = speed_text.get_rect(center=(self.screen_width // 2, self.screen_height // 3))
                             self.display_surface.blit(speed_text, text_rect)
                     else:
@@ -400,7 +398,7 @@ class Game(init_game):
 
                 self.display_surface.blit(self.current_penguin_img , self.penguin_rect)
                 for obs in self.obstacles:
-                    obs.draw(self.display_surface)
+                    obs.draw_obstacle(self.display_surface)
 
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:

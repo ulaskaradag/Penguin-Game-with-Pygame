@@ -93,7 +93,7 @@ class init_game:
     
         if hasattr(self, 'obstacles'):
             for obs in self.obstacles:
-                obs.reposition(self.ground_y, self.screen_height , self.ratio_h)
+                obs.reposition_obstacle(self.ground_y, self.screen_height , self.ratio_h)
 
         self.gui_mgr.set_window_resolution((self.screen_width, self.screen_height))
         self.gui_mgr.get_theme().load_theme(os.path.join('JSON', 'theme.json'))
