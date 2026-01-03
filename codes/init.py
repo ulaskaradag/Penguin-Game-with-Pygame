@@ -59,8 +59,9 @@ class init_game:
         self.show_speed_up_text = False
         self.speed_up_timer = 0
         self.last_speed_up_milestone = 0
-        
+
     
+    #Dynamically recalculate the size of the screen and the scaling ratios to ensure the rendering works on two different resolutions that game supports
     def update_dimensions(self):
 
         self.screen_width = self.display_surface.get_width()
@@ -73,6 +74,7 @@ class init_game:
             self.gui_mgr.set_window_resolution((self.screen_width, self.screen_height))
 
 
+    #Keeping the right positioning of objects and the layout of the UI in case of screen size change
     def handle_resize(self,is_fullscreen = False):
 
         if is_fullscreen:
@@ -100,15 +102,17 @@ class init_game:
         
         if self.current_menu == "main":
             self.set_buttons()
-               
 
+    
+    #Initializes the background music
     def set_sound(self):
             
             pygame.mixer.music.load(os.path.join('music' , 'theme_music.wav'))
             pygame.mixer.music.set_volume(0.5) # 50%
             pygame.mixer.music.play(-1) #Infinite loop
 
-    
+
+    #Loads and scales all image assets dynamically
     def set_image_assets(self):
 
         self.background = pygame.image.load(os.path.join('images', 'mountain.png')).convert()
@@ -144,12 +148,14 @@ class init_game:
         self.ground_x2 = self.screen_width
 
     
+    #Draws the same graphical surface twice at different horizontal positions on the screen to apply infinite scrolling effect
     def set_blits(self, surface ,pos_x1: int , pos_x2: int , pos_y1: int , pos_y2: int):  
 
         self.display_surface.blit(surface , (pos_x1 , pos_y1))
         self.display_surface.blit(surface , (pos_x2 , pos_y2))
 
-  
+
+    #Sets main screen menu buttons
     def set_buttons(self):
 
         self.gui_mgr.clear_and_reset()
@@ -190,6 +196,7 @@ class init_game:
         )
 
     
+    #Runs the main menu loop and handles user interactions
     def set_main_screen(self):
 
         self.current_menu = "main"
@@ -220,7 +227,8 @@ class init_game:
             self.gui_mgr.draw_ui(self.display_surface)
             pygame.display.flip()
 
-    
+
+    #Take cares of keyboard shortcuts
     def set_key_combinations(self):
         
         keys = pygame.key.get_pressed()
