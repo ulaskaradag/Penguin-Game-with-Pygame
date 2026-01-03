@@ -17,13 +17,16 @@ class Obstacle:
         self.speed = speed
         self.is_bird = is_bird
         self.mask = pygame.mask.from_surface(self.obs_img)
-    
+
+    #Moves the obstacle on screen
     def update_obstacle(self):
         self.rect.x -= self.speed
-    
+
+    #Shows the obstacle on the screen
     def draw_obstacle(self , surface):
         surface.blit(self.obs_img , self.rect)
-    
+
+    #Adjusts obstacle placement after screen is resized to maintain consistency on different screen sizes
     def reposition_obstacle(self, obs_ground_y, screen_height , ratio_h):
         if self.is_bird:
             self.rect.bottom = obs_ground_y - int(screen_height * 0.125)
@@ -55,7 +58,8 @@ class Game(init_game):
         self.obstacles = []
         self.obstacle_timer = 0
 
-    
+
+    #Creates and displays options menu
     def show_options_menu(self):
 
         def create_options_ui() -> tuple:
@@ -125,6 +129,7 @@ class Game(init_game):
         self.set_buttons()
 
 
+    #Provides visual countdown from 3 to 0 before gameplay continues again
     def countdown(self):
 
         countdown_start_time = pygame.time.get_ticks()
@@ -147,7 +152,8 @@ class Game(init_game):
         countdown_duration = pygame.time.get_ticks() - countdown_start_time
         self.start_ticks += countdown_duration
 
-    
+
+    #Creates and displays gameover screen
     def show_game_over_screen(self):
 
         def create_game_over_ui() -> tuple:
@@ -231,6 +237,7 @@ class Game(init_game):
             pygame.display.flip()
 
     
+    #Manages additional gameplay controls such as jumping, crouching and opening the options menu
     def set_key_combinations2(self):
 
         self.set_key_combinations()
@@ -259,12 +266,13 @@ class Game(init_game):
                 self.penguin_rect = self.current_penguin_img.get_rect(center= self.penguin_rect.center)
 
 
-
+    #Puts changed key configurations in a JSON file
     def save_keys(self):
         with open(os.path.join('JSON' , 'key_settings.json'), "w") as f:
             json.dump(self.key_dictionary, f)
 
-
+    
+    #Ratrieves the previously saved key configurations
     def load_keys(self):
         try:
             with open(os.path.join('JSON' , 'key_settings.json'), "r") as f:
@@ -274,6 +282,7 @@ class Game(init_game):
             pass
 
 
+    #Deals with main gameplay functionality
     def set_positions(self):
 
         self.score += 0.1
@@ -354,7 +363,8 @@ class Game(init_game):
             if penguin_mask.overlap(obs.mask , offset):
                 self.play = False
 
-      
+    
+    #Controls overall game flow
     def run(self):
         while True:
             self.set_main_screen()
