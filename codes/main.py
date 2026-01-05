@@ -394,7 +394,9 @@ class Game(init_game):
 
                 if self.show_speed_up_text:
                     current_time = pygame.time.get_ticks()
+                    # Check if 2 seconds(2000 ms) have not passed since the speed-up event started
                     if current_time - self.speed_up_timer < 2000:
+                        # Blink the text every 250 ms
                         if (current_time // 250) % 2 == 0:
                             speed_text = self.countdown_font.render("SPEED UP!", True, (255, 255, 255))
                             text_rect = speed_text.get_rect(center=(self.screen_width // 2, self.screen_height // 3))
